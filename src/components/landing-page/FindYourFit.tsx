@@ -1,7 +1,7 @@
 "use client";
 
-import { Link, SectionTitle } from "~/components";
-import { getPrimaryColorHexCode } from "@/src/lib/utils";
+import { Link, SectionTitle } from "@/components";
+import { getPrimaryColorHexCode } from "@/lib/utils";
 import {
   Box,
   Button,
@@ -15,7 +15,7 @@ import {
 } from "@mantine/core";
 import { IconBuildings, IconUsers, TablerIcon } from "@tabler/icons-react";
 import React from "react";
-import { ProfileTypes } from "@/src/lib/types";
+import { ProfileTypes } from "@/lib/types";
 
 const FindYourFit = () => {
   return (

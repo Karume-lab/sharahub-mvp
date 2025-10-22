@@ -2,7 +2,7 @@
 
 import { Box, Card, SimpleGrid, Text, Title } from "@mantine/core";
 import CountUp from "react-countup";
-import { SectionTitle } from "~/components";
+import { SectionTitle } from "@/components";
 
 const statistics = [
   { name: "ACTIVE AFFILIATES", value: 1200 },

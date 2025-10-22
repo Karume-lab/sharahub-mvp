@@ -1,4 +1,4 @@
-import Logo from "@/public/core/logo.png";
+import Logo from "~/public/core/logo.png";
 
 import { Image as MantineImage } from "@mantine/core";
 import Image from "next/image";

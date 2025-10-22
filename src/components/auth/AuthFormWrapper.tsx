@@ -1,4 +1,4 @@
-import { URLKeys } from "@/src/lib/types";
+import { URLKeys } from "@/lib/types";
 import {
   Anchor,
   BackgroundImage,
@@ -22,7 +22,7 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import React, { ReactNode } from "react";
-import { SiteLogo } from "~/components";
+import { SiteLogo } from "@/components";
 
 interface AuthFormWrapperProps {
   title: string;

@@ -10,7 +10,7 @@ import {
   IconBrandWhatsapp,
   IconBrandWordpress,
 } from "@tabler/icons-react";
-import { SectionTitle } from "~/components";
+import { SectionTitle } from "@/components";
 
 const iconsBrand = [
   IconBrand4chan,

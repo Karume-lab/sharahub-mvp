@@ -14,7 +14,7 @@ import {
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import NotFoundIllustration from "@/public/core/not-found.svg";
+import NotFoundIllustration from "~/public/core/not-found.svg";
 
 const NotFound = () => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/src/lib/constants";
+import { navLinks } from "@/lib/constants";
 import {
   AppShell,
   AppShellHeader,
@@ -14,7 +14,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure, useHeadroom } from "@mantine/hooks";
 import React from "react";
-import { LandingPageFooter, LandingPageHeader, Link } from "~/components";
+import { LandingPageFooter, LandingPageHeader, Link } from "@/components";
 
 interface LandingPageAppShellWrapperProps {
   children: React.ReactNode;

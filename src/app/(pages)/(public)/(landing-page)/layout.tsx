@@ -1,4 +1,4 @@
-import { LandingPageAppShellWrapper } from "~/components";
+import { LandingPageAppShellWrapper } from "@/components";
 import React from "react";
 
 interface LandingPageLayoutProps

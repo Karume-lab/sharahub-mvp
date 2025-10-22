@@ -1,6 +1,6 @@
 "use client";
 
-import { URLKeys } from "@/src/lib/types";
+import { URLKeys } from "@/lib/types";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import React from "react";
 

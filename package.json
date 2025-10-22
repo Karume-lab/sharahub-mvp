@@ -7,7 +7,13 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx src/scripts/seed.ts",
+    "db:reset": "rm -f ./sqlite.db && pnpm run db:push && pnpm run db:seed"
   },
   "dependencies": {
     "@gfazioli/mantine-marquee": "^2.6.2",
@@ -22,12 +28,20 @@
     "@mantine/notifications": "^8.3.5",
     "@mantine/spotlight": "^8.3.5",
     "@mantine/tiptap": "^8.3.5",
+    "@orpc/client": "^1.10.0",
+    "@orpc/react-query": "^1.10.0",
+    "@orpc/server": "^1.10.0",
+    "@orpc/tanstack-query": "^1.10.0",
     "@tabler/icons-react": "^3.35.0",
+    "@tanstack/react-query": "^5.90.5",
+    "@tanstack/react-table": "^8.21.3",
     "@tiptap/extension-link": "^3.7.2",
     "@tiptap/pm": "^3.7.2",
     "@tiptap/react": "^3.7.2",
     "@tiptap/starter-kit": "^3.7.2",
     "dayjs": "^1.11.18",
+    "drizzle-kit": "^0.31.5",
+    "drizzle-orm": "^0.44.6",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "mantine-form-zod-resolver": "^1.3.0",
@@ -41,12 +55,16 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
-    "@types/node": "^20",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "better-sqlite3": "^12.4.1",
+    "drizzle-seed": "^0.3.1",
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }

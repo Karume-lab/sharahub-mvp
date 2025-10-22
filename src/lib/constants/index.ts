@@ -1,4 +1,4 @@
-import { URLKeys } from "@/src/lib/types";
+import { URLKeys } from "@/lib/types";
 
 export const navLinks: { label: string; href: URLKeys }[] = [
   { label: "The Team", href: "#the-team" },

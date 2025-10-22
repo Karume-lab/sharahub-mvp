@@ -6,7 +6,7 @@ import {
   Partners,
   Statistics,
   TheTeam,
-} from "~/components";
+} from "@/components";
 import { Stack } from "@mantine/core";
 
 const LandingPage = () => {

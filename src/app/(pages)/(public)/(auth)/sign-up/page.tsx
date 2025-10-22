@@ -1,4 +1,4 @@
-import { AuthFormWrapper, SignUpForm } from "~/components";
+import { AuthFormWrapper, SignUpForm } from "@/components";
 
 export const dynamic = "force-dynamic";
 

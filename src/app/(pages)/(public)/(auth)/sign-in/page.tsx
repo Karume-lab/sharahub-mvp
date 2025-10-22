@@ -1,4 +1,4 @@
-import { AuthFormWrapper, SignInForm } from "~/components";
+import { AuthFormWrapper, SignInForm } from "@/components";
 
 const SignInPage = () => {
   return (

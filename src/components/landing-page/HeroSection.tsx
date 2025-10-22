@@ -1,5 +1,5 @@
 import styles from "#/hero-section.module.css";
-import PeopleDiscussing from "@/public/landing-page/people-discussing.png";
+import PeopleDiscussing from "~/public/landing-page/people-discussing.png";
 import {
   Anchor,
   Button,
@@ -10,10 +10,10 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  Title
+  Title,
 } from "@mantine/core";
 import Image from "next/image";
-import { Link } from "~/components";
+import { Link } from "@/components";
 
 const HeroSection = () => {
   return (

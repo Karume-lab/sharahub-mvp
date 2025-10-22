@@ -13,7 +13,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import { IconUserFilled } from "@tabler/icons-react";
-import { Link } from "~/components";
+import { Link } from "@/components";
 
 const SignUpForm = () => {
   return (
