@@ -9,7 +9,7 @@ const link = new RPCLink({
     typeof window !== "undefined"
       ? window.location.origin
       : "http://localhost:3000"
-  }/rpc`,
+  }/api/rpc`,
   headers: async () => {
     if (typeof window !== "undefined") return {};
     const { headers } = await import("next/headers");

@@ -1,10 +1,10 @@
+import { pgTable, serial, text, boolean } from "drizzle-orm/pg-core";
 import { InferInsertModel, InferSelectModel } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const todos = sqliteTable("todos", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const todos = pgTable("todos", {
+  id: serial("id").primaryKey(),
   text: text("text").notNull(),
-  done: integer("done", { mode: "boolean" }).notNull().default(false),
+  done: boolean("done").notNull().default(false),
 });
 
 export type Todo = InferSelectModel<typeof todos>;
