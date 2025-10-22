@@ -32,7 +32,7 @@ interface AuthFormWrapperProps {
     actionTitle: string;
   };
   footerActionTitle: string;
-  Form: Readonly<ReactNode>;
+  Form: () => Readonly<ReactNode>;
   sideImageSrc: string;
 }
 
@@ -79,7 +79,7 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
             label={<Text c="white">OR {footerActionTitle} WITH EMAIL</Text>}
           />
           <Box mah={{ lg: "60vh" }} mih={{ lg: 300 }}>
-            {Form}
+            <Form />
           </Box>
         </Stack>
 

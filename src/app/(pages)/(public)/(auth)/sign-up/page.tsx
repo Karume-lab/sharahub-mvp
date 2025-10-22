@@ -12,7 +12,7 @@ const SignUpPage = () => {
       }}
       footerActionTitle="SIGN UP"
       title="Sign up for a new account"
-      Form={<SignUpForm />}
+      Form={SignUpForm}
       sideImageSrc={"/auth/sign-up.svg"}
     />
   );
