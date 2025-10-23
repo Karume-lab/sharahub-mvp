@@ -1,4 +1,4 @@
-import { SignOutButton } from "@/components";
+import { SignOutButton } from "@/features/auth";
 
 const DashboardPage = () => {
   return (
