@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres         
+    image: postgres:latest
     container_name: sharahub
     environment:
       POSTGRES_USER: admin
