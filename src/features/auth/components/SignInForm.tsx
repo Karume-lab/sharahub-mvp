@@ -1,6 +1,7 @@
 "use client";
 
-import { authClient } from "~/src/features/auth/utils/auth-client";
+import { authClient } from "@/features/auth/utils/auth-client";
+import { SignInSchema, signInSchema } from "@/features/auth/validations";
 import {
   Anchor,
   Button,
@@ -10,45 +11,32 @@ import {
   Stack,
   TextInput,
 } from "@mantine/core";
+import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
-import { IconUserFilled } from "@tabler/icons-react";
+import { IconMailFilled } from "@tabler/icons-react";
+import { useMutation } from "@tanstack/react-query";
+import { zod4Resolver } from "mantine-form-zod-resolver";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const SignInForm = () => {
-  /* TODO:
-  - use mantine forms
-  - use react query
-  - create forgot password
-  */
+  const form = useForm<SignInSchema>({
+    validate: zod4Resolver(signInSchema),
+    initialValues: {
+      email: "",
+      password: "",
+      rememberMe: true,
+    },
+  });
 
-  const [emailOrPhone, setEmailOrPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-
-  const handleSignIn = async () => {
-    if (!emailOrPhone || !password) {
-      notifications.show({
-        title: "Missing information",
-        message: "Please enter your email (or phone) and password.",
-        color: "red",
-      });
-      return;
-    }
-
-    try {
-      setLoading(true);
-      await authClient.signIn.email(
+  const mutation = useMutation({
+    mutationFn: async (values: SignInSchema) => {
+      return await authClient.signIn.email(
         {
-          email: emailOrPhone,
-          password,
+          email: values.email,
+          password: values.password,
+          callbackURL: "/dashboard",
         },
         {
-          onRequest: () => setLoading(true),
-          onResponse: () => setLoading(false),
           onError: (ctx) => {
             notifications.show({
               title: "Sign-in failed",
@@ -57,71 +45,60 @@ const SignInForm = () => {
               color: "red",
             });
           },
-          onSuccess: async () => {
+          onSuccess: () => {
             notifications.show({
               title: "Welcome back!",
-              message: "You’ve signed in successfully.",
+              message: "You've signed in successfully.",
               color: "green",
             });
-            router.push("/dashboard");
           },
         }
       );
-    } catch (err: any) {
-      console.error("Sign-in error:", err);
-      notifications.show({
-        title: "Unexpected error",
-        message: "Something went wrong. Please try again later.",
-        color: "red",
-      });
-      setLoading(false);
-    }
-  };
+    },
+  });
+
+  const handleSubmit = form.onSubmit((values) => {
+    mutation.mutate(values);
+  });
 
   return (
-    <Stack px={150}>
-      <TextInput
-        label="Email or Phone Number"
-        placeholder="Enter the email or phone number you used to create your account"
-        rightSection={<IconUserFilled />}
-        c={"white"}
-        withAsterisk
-        value={emailOrPhone}
-        onChange={(e) => setEmailOrPhone(e.currentTarget.value)}
-      />
-
-      <PasswordInput
-        label="Password"
-        placeholder="Enter your password"
-        c={"white"}
-        withAsterisk
-        value={password}
-        onChange={(e) => setPassword(e.currentTarget.value)}
-      />
-
-      <Group justify="space-between" mt="xs">
-        <Checkbox
-          label="Remember me"
-          checked={rememberMe}
-          onChange={(e) => setRememberMe(e.currentTarget.checked)}
+    <form onSubmit={handleSubmit}>
+      <Stack px={150}>
+        <TextInput
+          label="Email"
+          placeholder="Enter the email you used to create your account"
+          rightSection={<IconMailFilled />}
           c={"white"}
+          withAsterisk
+          {...form.getInputProps("email")}
         />
-        <Anchor component={Link} href="/forgot-password" c="white" size="sm">
-          Forgot password?
-        </Anchor>
-      </Group>
 
-      <Group justify="flex-end" mt="md">
-        <Button
-          type="submit"
-          fullWidth
-          loading={loading}
-          onClick={handleSignIn}
-        >
-          Sign in
-        </Button>
-      </Group>
-    </Stack>
+        <PasswordInput
+          label="Password"
+          placeholder="Enter your password"
+          c={"white"}
+          withAsterisk
+          {...form.getInputProps("password")}
+        />
+
+        <Group justify="space-between" mt="xs">
+          <Checkbox
+            label="Remember me"
+            c="white"
+            {...form.getInputProps("rememberMe", { type: "checkbox" })}
+          />
+          <Anchor component={Link} href="/forgot-password" c="white" size="sm">
+            Forgot password?
+          </Anchor>
+        </Group>
+
+        <Group justify="flex-end" mt="md">
+          <Button type="submit" fullWidth loading={mutation.isPending}>
+            Sign in
+          </Button>
+        </Group>
+      </Stack>
+    </form>
   );
 };
 

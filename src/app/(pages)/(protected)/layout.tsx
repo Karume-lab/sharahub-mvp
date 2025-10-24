@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "~/src/features/auth/utils/auth";
+import { auth } from "@/features/auth/utils/auth";
 import { headers } from "next/headers";
 import { redirect, RedirectType } from "next/navigation";
 

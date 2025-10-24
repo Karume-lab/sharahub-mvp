@@ -63,7 +63,9 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
             </Title>
           </CardSection>
 
-          <SimpleGrid cols={{ base: 1, md: 3 }}>
+          {/* TODO: implement social auth */}
+
+          {/* <SimpleGrid cols={{ base: 1, md: 3 }}>
             <Button fullWidth leftSection={<IconBrandGoogleFilled />}>
               Google
             </Button>
@@ -77,7 +79,7 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
 
           <Divider
             label={<Text c="white">OR {footerActionTitle} WITH EMAIL</Text>}
-          />
+          /> */}
           <Box mah={{ lg: "60vh" }} mih={{ lg: 300 }}>
             <Form />
           </Box>

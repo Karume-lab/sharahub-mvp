@@ -9,12 +9,13 @@
     "lint": "biome check",
     "format": "biome format --write",
     "db:generate": "drizzle-kit generate",
-    "db:generate-auth": "pnpm dlx @better-auth/cli@latest generate --output ./src/__generated__/better-auth/auth-schema.ts --yes",
+    "db:generate-auth": "pnpm dlx @better-auth/cli@latest generate --output ./src/features/auth/db/auth.ts --config ./src/features/auth/utils/auth.ts --yes",
     "db:push": "drizzle-kit push",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx src/scripts/seed.ts",
-    "db:reset": "drizzle-kit drop && pnpm run db:push && pnpm run db:seed"
+    "db:reset": "drizzle-kit drop && pnpm run db:push",
+    "db:reset:seed": "drizzle-kit drop && pnpm run db:push && pnpm run db:seed"
   },
   "dependencies": {
     "@gfazioli/mantine-marquee": "^2.6.2",

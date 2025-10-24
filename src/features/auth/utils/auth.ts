@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "@/lib/db";
 import { nextCookies } from "better-auth/next-js";
-import { user, account, session } from "~/src/features/auth/db/auth";
+import { user, account, session } from "@/features/auth/db/auth";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -13,6 +13,13 @@ export const auth = betterAuth({
       session,
     },
   }),
+  user: {
+    additionalFields: {
+      profileType: {
+        type: "string",
+      },
+    },
+  },
   emailAndPassword: {
     enabled: true,
     sendResetPassword: async (data, request) => {

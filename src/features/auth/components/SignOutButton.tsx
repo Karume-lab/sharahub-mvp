@@ -2,7 +2,7 @@
 
 import { Button } from "@mantine/core";
 import { useRouter } from "next/navigation";
-import { authClient } from "~/src/features/auth/utils/auth-client";
+import { authClient } from "@/features/auth/utils/auth-client";
 
 const SignOutButton = () => {
   const router = useRouter();
