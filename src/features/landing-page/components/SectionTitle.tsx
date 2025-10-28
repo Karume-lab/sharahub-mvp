@@ -12,9 +12,9 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, description }) => {
       <Title order={6} c="primary">
         {title}
       </Title>
-      <Title size={36} fw={"normal"} c={'gray'}>
+      <Text fw={"normal"} c={"gray"} size="lg">
         {description}
-      </Title>
+      </Text>
     </Box>
   );
 };
