@@ -12,7 +12,7 @@ import { IconMailFilled } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
 
-const ResetPassword = () => {
+const ResetPasswordForm = () => {
   const form = useForm<ResetPasswordSchema>({
     validate: zod4Resolver(resetPasswordSchema),
     initialValues: {
@@ -69,4 +69,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ResetPasswordForm;

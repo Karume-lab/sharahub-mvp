@@ -1,5 +1,5 @@
 import AuthFormWrapper from "@/features/auth/components/AuthFormWrapper";
-import ResetPassword from "@/features/auth/components/ResetPassword";
+import ResetPasswordForm from "@/features/auth/components/ResetPasswordForm";
 import SignInForm from "@/features/auth/components/SignInForm";
 import SignOutButton from "@/features/auth/components/SignOutButton";
 import SignUpForm from "@/features/auth/components/SignUpForm";
@@ -9,5 +9,5 @@ export {
   SignInForm,
   SignUpForm,
   SignOutButton,
-  ResetPassword,
+  ResetPasswordForm,
 };

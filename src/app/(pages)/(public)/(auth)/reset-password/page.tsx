@@ -1,4 +1,4 @@
-import { AuthFormWrapper, ResetPassword } from "@/features/auth";
+import { AuthFormWrapper, ResetPasswordForm } from "@/features/auth";
 
 const ResetPasswordPage = () => {
   return (
@@ -10,7 +10,7 @@ const ResetPasswordPage = () => {
       }}
       footerActionTitle="SIGN IN"
       title="Forget password"
-      Form={ResetPassword}
+      Form={ResetPasswordForm}
       sideImageSrc={"/auth/reset-password.svg"}
     />
   );
