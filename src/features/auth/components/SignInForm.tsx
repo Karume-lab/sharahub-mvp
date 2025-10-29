@@ -9,6 +9,7 @@ import {
   Group,
   PasswordInput,
   Stack,
+  Text,
   TextInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
@@ -81,16 +82,23 @@ const SignInForm = () => {
           {...form.getInputProps("password")}
         />
 
-        <Group justify="space-between" mt="xs">
-          <Checkbox
-            label="Remember me"
+        <Checkbox
+          label="Remember me"
+          c="white"
+          {...form.getInputProps("rememberMe", { type: "checkbox" })}
+        />
+
+        <Text c="white" ta={"left"} size="sm">
+          Forgot your password?{" "}
+          <Anchor
+            component={Link}
+            href={"/reset-password"}
             c="white"
-            {...form.getInputProps("rememberMe", { type: "checkbox" })}
-          />
-          <Anchor component={Link} href="/forgot-password" c="white" size="sm">
-            Forgot password?
+            underline="always"
+          >
+            Reset
           </Anchor>
-        </Group>
+        </Text>
 
         <Group justify="flex-end" mt="md">
           <Button type="submit" fullWidth loading={mutation.isPending}>

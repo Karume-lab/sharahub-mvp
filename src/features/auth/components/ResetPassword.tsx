@@ -2,36 +2,36 @@
 
 import { authClient } from "@/features/auth/utils/auth-client";
 import {
-  ForgotPasswordSchema,
-  forgotPasswordSchema,
+  resetPasswordSchema,
+  ResetPasswordSchema,
 } from "@/features/auth/validations";
-import { Button, Stack, TextInput, Text, Anchor } from "@mantine/core";
+import { Button, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
 import { IconMailFilled } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
-import Link from "next/link";
 
-const ForgotPassword = () => {
-  const form = useForm<ForgotPasswordSchema>({
-    validate: zod4Resolver(forgotPasswordSchema),
+const ResetPassword = () => {
+  const form = useForm<ResetPasswordSchema>({
+    validate: zod4Resolver(resetPasswordSchema),
     initialValues: {
       email: "",
     },
   });
 
   const mutation = useMutation({
-    mutationFn: async (values: ForgotPasswordSchema) => {
+    mutationFn: async (values: ResetPasswordSchema) => {
       return await authClient.forgetPassword(
         {
           email: values.email,
+          redirectTo: "/dashboard",
         },
         {
           onSuccess: () => {
             notifications.show({
               title: "Email sent",
-              message: "A password reset link has been sent to your email.",
+              message: "If an account exists, a reset link was sent.",
               color: "green",
             });
           },
@@ -52,14 +52,6 @@ const ForgotPassword = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Stack px={150}>
-        <Text c="white" ta="center" size="lg" fw={500}>
-          Forgot your password?
-        </Text>
-        <Text c="dimmed" ta="center" size="sm">
-          Enter the email associated with your account and we'll send you a
-          reset link.
-        </Text>
-
         <TextInput
           label="Email"
           placeholder="Enter your account email"
@@ -72,16 +64,9 @@ const ForgotPassword = () => {
         <Button type="submit" fullWidth loading={mutation.isPending}>
           Send Reset Link
         </Button>
-
-        <Text ta="center" size="sm" c="dimmed">
-          Remember your password?{" "}
-          <Anchor component={Link} href="/sign-in" c="white">
-            Sign in
-          </Anchor>
-        </Text>
       </Stack>
     </form>
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

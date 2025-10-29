@@ -1,4 +1,4 @@
-import { account, session, user } from "@/features/auth/db/auth";
+import { account, session, user, verification } from "@/features/auth/db/auth";
 import { db } from "@/lib/db";
 import { sendEmail } from "@/lib/utils";
 import { betterAuth } from "better-auth";
@@ -13,6 +13,7 @@ export const auth = betterAuth({
       user,
       account,
       session,
+      verification,
     },
   }),
 
@@ -27,16 +28,21 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
 
-    sendResetPassword: async (data, request) => {
+    sendResetPassword: async ({ user, token }) => {
       await sendEmail({
-        to: data.user.email,
+        to: user.email,
         subject: "Reset your password",
         html: `
-            <p>You requested a password reset.</p>
-            <p>Click below to reset your password:</p>
-            <a href="${request?.url}">Reset Password</a>
-            <p>If you didn't request this, please ignore this email.</p>
-          `,
+          <p>You requested a password reset.</p>
+          <p>Click below to reset your password:</p>
+          <a 
+            href="${process.env.NEXT_PUBLIC_APP_URL}/reset-password/${token}" 
+            style="color: #1a73e8; text-decoration: none; font-weight: bold;"
+          >
+            Reset Password
+          </a>
+          <p>If you didn't request this, please ignore this email.</p>
+        `,
       });
     },
   },
@@ -52,6 +58,7 @@ export const auth = betterAuth({
     nextCookies(),
 
     emailOTP({
+      expiresIn: 999999999,
       async sendVerificationOTP({ email, otp, type }) {
         if (type === "email-verification") {
           await sendEmail({
