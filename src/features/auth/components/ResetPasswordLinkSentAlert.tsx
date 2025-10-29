@@ -38,7 +38,7 @@ const ResetPasswordLinkSentAlert: React.FC<ResetPasswordLinkSentAlertProps> = ({
 
           <Group justify="flex-end" mt="sm">
             <Button size="xs" variant="white" onClick={onBack} radius="md">
-              Can't see the email?
+              Resend
             </Button>
           </Group>
         </Alert>
