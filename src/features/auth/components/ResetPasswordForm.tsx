@@ -14,7 +14,7 @@ import { zod4Resolver } from "mantine-form-zod-resolver";
 import ResetPasswordLinkSentAlert from "@/features/auth/components/ResetPasswordLinkSentAlert";
 
 const ResetPasswordForm = () => {
-  const [emailSent, setEmailSent] = useState(true);
+  const [emailSent, setEmailSent] = useState(false);
   const [sentTo, setSentTo] = useState("");
 
   const form = useForm<ResetPasswordSchema>({
