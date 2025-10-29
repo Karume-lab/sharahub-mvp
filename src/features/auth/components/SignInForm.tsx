@@ -47,6 +47,7 @@ const SignInForm = () => {
             });
           },
           onSuccess: () => {
+            form.reset();
             notifications.show({
               title: "Welcome back!",
               message: "You've signed in successfully.",
@@ -64,13 +65,14 @@ const SignInForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack px={150}>
+      <Stack px={{ lg: 50, xl: 100 }}>
         <TextInput
           label="Email"
           placeholder="Enter the email you used to create your account"
           rightSection={<IconMailFilled />}
           c={"white"}
           withAsterisk
+          disabled={mutation.isPending}
           {...form.getInputProps("email")}
         />
 
@@ -79,6 +81,7 @@ const SignInForm = () => {
           placeholder="Enter your password"
           c={"white"}
           withAsterisk
+          disabled={mutation.isPending}
           {...form.getInputProps("password")}
         />
 

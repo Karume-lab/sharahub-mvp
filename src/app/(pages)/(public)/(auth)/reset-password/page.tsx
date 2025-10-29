@@ -9,7 +9,7 @@ const ResetPasswordPage = () => {
         href: "/sign-in",
       }}
       footerActionTitle="SIGN IN"
-      title="Forget password"
+      title="Reset password"
       Form={ResetPasswordForm}
       sideImageSrc={"/auth/reset-password.svg"}
     />

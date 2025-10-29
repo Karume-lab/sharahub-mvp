@@ -1,45 +1,41 @@
 "use client";
 
+import { useState } from "react";
 import { authClient } from "@/features/auth/utils/auth-client";
 import {
   resetPasswordSchema,
-  ResetPasswordSchema,
+  type ResetPasswordSchema,
 } from "@/features/auth/validations";
-import { Button, Stack, TextInput } from "@mantine/core";
+import { Button, Stack, TextInput, Transition, Box } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { notifications } from "@mantine/notifications";
 import { IconMailFilled } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
+import ResetPasswordLinkSentAlert from "@/features/auth/components/ResetPasswordLinkSentAlert";
 
 const ResetPasswordForm = () => {
+  const [emailSent, setEmailSent] = useState(true);
+  const [sentTo, setSentTo] = useState("");
+
   const form = useForm<ResetPasswordSchema>({
     validate: zod4Resolver(resetPasswordSchema),
-    initialValues: {
-      email: "",
-    },
+    initialValues: { email: "" },
   });
 
   const mutation = useMutation({
     mutationFn: async (values: ResetPasswordSchema) => {
       return await authClient.forgetPassword(
-        {
-          email: values.email,
-          redirectTo: "/dashboard",
-        },
+        { email: values.email, redirectTo: "/dashboard" },
         {
           onSuccess: () => {
-            notifications.show({
-              title: "Email sent",
-              message: "If an account exists, a reset link was sent.",
-              color: "green",
-            });
+            setSentTo(values.email);
+            setEmailSent(true);
+            form.reset();
           },
           onError: (ctx) => {
-            notifications.show({
-              title: "Error",
-              message: ctx.error.message || "Failed to send reset link.",
-              color: "red",
+            setEmailSent(false);
+            form.setErrors({
+              email: ctx.error.message || "Failed to send reset link.",
             });
           },
         }
@@ -50,22 +46,54 @@ const ResetPasswordForm = () => {
   const handleSubmit = form.onSubmit((values) => mutation.mutate(values));
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack px={150}>
-        <TextInput
-          label="Email"
-          placeholder="Enter your account email"
-          rightSection={<IconMailFilled />}
-          withAsterisk
-          c="white"
-          {...form.getInputProps("email")}
-        />
+    <Box pos="relative" mih={200}>
+      <Transition
+        mounted={!emailSent}
+        transition="fade-up"
+        duration={500}
+        timingFunction="ease-in-out"
+      >
+        {(styles) => (
+          <form
+            onSubmit={handleSubmit}
+            style={{ ...styles, position: "absolute", width: "100%" }}
+          >
+            <Stack px={{ lg: 50, xl: 100 }}>
+              <TextInput
+                label="Email"
+                placeholder="Enter your account email"
+                rightSection={<IconMailFilled />}
+                withAsterisk
+                disabled={mutation.isPending}
+                c="white"
+                {...form.getInputProps("email")}
+              />
 
-        <Button type="submit" fullWidth loading={mutation.isPending}>
-          Send Reset Link
-        </Button>
-      </Stack>
-    </form>
+              <Button type="submit" fullWidth loading={mutation.isPending}>
+                Send Reset Link
+              </Button>
+            </Stack>
+          </form>
+        )}
+      </Transition>
+
+      <Transition
+        mounted={emailSent}
+        transition="fade-up"
+        duration={500}
+        timingFunction="ease-in-out"
+      >
+        {(styles) => (
+          <div style={{ ...styles, position: "absolute", width: "100%" }}>
+            <ResetPasswordLinkSentAlert
+              visible={emailSent}
+              email={sentTo}
+              onBack={() => setEmailSent(false)}
+            />
+          </div>
+        )}
+      </Transition>
+    </Box>
   );
 };
 
