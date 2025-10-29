@@ -16,7 +16,7 @@ const ProtectedLayout: React.FC<ProtectedLayoutProps> = async ({
   });
 
   if (!session) {
-    redirect("/sign-in", RedirectType.replace);
+    redirect("/sign-in");
   }
 
   return <>{children}</>;
