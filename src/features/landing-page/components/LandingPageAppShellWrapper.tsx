@@ -12,8 +12,8 @@ import {
   Menu,
 } from "@mantine/core";
 import { useDisclosure, useHeadroom } from "@mantine/hooks";
+import Link from "next/link";
 import type React from "react";
-import { Link } from "@/components";
 import LandingPageFooter from "@/features/landing-page/components/LandingPageFooter";
 import LandingPageHeader from "@/features/landing-page/components/LandingPageHeader";
 import { navLinks } from "@/lib/constants";

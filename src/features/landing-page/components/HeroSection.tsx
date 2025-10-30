@@ -11,8 +11,8 @@ import {
   Title,
 } from "@mantine/core";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "#/hero-section.module.css";
-import { Link } from "@/components";
 import PeopleDiscussing from "~/public/landing-page/people-discussing.png";
 
 const HeroSection = () => {

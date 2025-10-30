@@ -12,8 +12,8 @@ import {
   Title,
 } from "@mantine/core";
 import { IconBuildings, IconUsers, type TablerIcon } from "@tabler/icons-react";
+import Link from "next/link";
 import type React from "react";
-import { Link } from "@/components";
 import SectionTitle from "@/features/landing-page/components/SectionTitle";
 import type { ProfileTypes } from "@/lib/types";
 import { getPrimaryColorHexCode } from "@/lib/utils";

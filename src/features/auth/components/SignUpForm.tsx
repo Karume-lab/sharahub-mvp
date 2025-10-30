@@ -21,8 +21,8 @@ import {
 } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Link } from "@/components";
 import { authClient } from "@/features/auth/utils/auth-client";
 import { type SignUpSchema, signUpSchema } from "@/features/auth/validations";
 

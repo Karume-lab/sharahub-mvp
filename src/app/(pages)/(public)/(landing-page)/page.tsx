@@ -10,6 +10,7 @@ import {
 } from "@/features/landing-page";
 
 const LandingPage = () => {
+  console.log(process.env);
   return (
     <Stack gap={"lg"}>
       <HeroSection />
