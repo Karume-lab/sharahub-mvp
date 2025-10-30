@@ -1,5 +1,6 @@
 import { Anchor, Button, Group } from "@mantine/core";
-import { Link, SiteLogo } from "@/components";
+import Link from "next/link";
+import { SiteLogo } from "@/components";
 import { navLinks } from "@/lib/constants";
 
 const LandingPageHeader = () => {
