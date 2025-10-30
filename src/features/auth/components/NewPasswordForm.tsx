@@ -1,16 +1,16 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { Button, PasswordInput, Stack, Text } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
+import { Button, PasswordInput, Stack } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { zod4Resolver } from "mantine-form-zod-resolver";
+import { notifications } from "@mantine/notifications";
 import { useMutation } from "@tanstack/react-query";
-import {
-  newPasswordSchema,
-  type NewPasswordSchema,
-} from "@/features/auth/validations";
+import { zod4Resolver } from "mantine-form-zod-resolver";
+import { useParams, useRouter } from "next/navigation";
 import { authClient } from "@/features/auth/utils/auth-client";
+import {
+  type NewPasswordSchema,
+  newPasswordSchema,
+} from "@/features/auth/validations";
 
 const NewPasswordForm = () => {
   const { token } = useParams<{ token: string }>();
@@ -50,7 +50,7 @@ const NewPasswordForm = () => {
               color: "red",
             });
           },
-        }
+        },
       );
     },
   });

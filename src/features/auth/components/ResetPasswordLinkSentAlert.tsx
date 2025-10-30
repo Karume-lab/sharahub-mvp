@@ -1,6 +1,6 @@
 import { Alert, Button, Group, Text } from "@mantine/core";
 import { IconMail } from "@tabler/icons-react";
-import React from "react";
+import type React from "react";
 
 interface ResetPasswordLinkSentAlertProps {
   email: string;

@@ -5,11 +5,11 @@ import {
   Card,
   Center,
   Container,
+  Image as MantineImage,
+  rem,
   Stack,
   Text,
   Title,
-  Image as MantineImage,
-  rem,
 } from "@mantine/core";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import Image from "next/image";

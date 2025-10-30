@@ -1,5 +1,3 @@
-import styles from "#/partners.module.css";
-import SectionTitle from "@/features/landing-page/components/SectionTitle";
 import { Marquee } from "@gfazioli/mantine-marquee";
 import { Box, ThemeIcon } from "@mantine/core";
 import {
@@ -11,15 +9,38 @@ import {
   IconBrandWhatsapp,
   IconBrandWordpress,
 } from "@tabler/icons-react";
+import styles from "#/partners.module.css";
+import SectionTitle from "@/features/landing-page/components/SectionTitle";
 
-const iconsBrand = [
-  IconBrand4chan,
-  IconBrandWhatsapp,
-  IconBrandWordpress,
-  IconBrandBing,
-  IconBrandGithub,
-  IconBrandMantine,
-  IconBrandAmazon,
+const partners = [
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrand4chan,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrandWhatsapp,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrandWordpress,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrandBing,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrandGithub,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrandMantine,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    Icon: IconBrandAmazon,
+  },
 ];
 
 const Partners = () => {
@@ -34,14 +55,14 @@ const Partners = () => {
 
       <Box mt="lg" px={{ base: "sm", sm: "lg", md: 80 }}>
         <Marquee pauseOnHover fadeEdges repeat={4}>
-          {iconsBrand.map((Icon, index) => (
+          {partners.map((partner) => (
             <ThemeIcon
-              key={index}
+              key={partner.uuid}
               variant="transparent"
               className={styles.iconResponsive}
               mx="md"
             >
-              <Icon style={{ width: "70%", height: "70%" }} />
+              <partner.Icon style={{ width: "70%", height: "70%" }} />
             </ThemeIcon>
           ))}
         </Marquee>

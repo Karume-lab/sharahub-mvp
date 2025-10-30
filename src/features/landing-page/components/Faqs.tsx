@@ -1,4 +1,3 @@
-import SectionTitle from "@/features/landing-page/components/SectionTitle";
 import {
   Accordion,
   AccordionControl,
@@ -7,6 +6,7 @@ import {
   Box,
   Container,
 } from "@mantine/core";
+import SectionTitle from "@/features/landing-page/components/SectionTitle";
 
 const faqs = [
   {

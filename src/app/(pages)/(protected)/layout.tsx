@@ -1,7 +1,7 @@
-import React from "react";
-import { auth } from "@/features/auth/utils/auth";
 import { headers } from "next/headers";
-import { redirect, RedirectType } from "next/navigation";
+import { redirect } from "next/navigation";
+import type React from "react";
+import { auth } from "@/features/auth/utils/auth";
 
 interface ProtectedLayoutProps
   extends Readonly<{

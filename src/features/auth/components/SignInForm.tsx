@@ -1,7 +1,5 @@
 "use client";
 
-import { authClient } from "@/features/auth/utils/auth-client";
-import { SignInSchema, signInSchema } from "@/features/auth/validations";
 import {
   Anchor,
   Button,
@@ -18,6 +16,8 @@ import { IconMailFilled } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
 import Link from "next/link";
+import { authClient } from "@/features/auth/utils/auth-client";
+import { type SignInSchema, signInSchema } from "@/features/auth/validations";
 
 const SignInForm = () => {
   const form = useForm<SignInSchema>({
@@ -54,7 +54,7 @@ const SignInForm = () => {
               color: "green",
             });
           },
-        }
+        },
       );
     },
   });

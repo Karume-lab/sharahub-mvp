@@ -1,6 +1,5 @@
 "use client";
 
-import { getPrimaryColorHexCode } from "@/lib/utils";
 import {
   Box,
   Button,
@@ -12,11 +11,12 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { IconBuildings, IconUsers, TablerIcon } from "@tabler/icons-react";
-import React from "react";
-import { ProfileTypes } from "@/lib/types";
-import SectionTitle from "@/features/landing-page/components/SectionTitle";
+import { IconBuildings, IconUsers, type TablerIcon } from "@tabler/icons-react";
+import type React from "react";
 import { Link } from "@/components";
+import SectionTitle from "@/features/landing-page/components/SectionTitle";
+import type { ProfileTypes } from "@/lib/types";
+import { getPrimaryColorHexCode } from "@/lib/utils";
 
 const FindYourFit = () => {
   return (

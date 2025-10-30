@@ -1,3 +1,4 @@
+import { Stack } from "@mantine/core";
 import {
   Faqs,
   FindYourFit,
@@ -7,7 +8,6 @@ import {
   Statistics,
   TheTeam,
 } from "@/features/landing-page";
-import { Stack } from "@mantine/core";
 
 const LandingPage = () => {
   return (

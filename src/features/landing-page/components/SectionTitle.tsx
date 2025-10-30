@@ -1,5 +1,5 @@
 import { Box, Text, Title } from "@mantine/core";
-import React from "react";
+import type React from "react";
 
 interface SectionTitleProps {
   title: string;

@@ -1,4 +1,5 @@
-import { URLKeys } from "@/lib/types";
+/** biome-ignore-all lint/correctness/noUnusedImports: Yet to implement social auth */
+/** biome-ignore-all lint/correctness/noUnusedFunctionParameters: Yet to implement social auth */
 import {
   Anchor,
   BackgroundImage,
@@ -21,8 +22,10 @@ import {
   IconBrandInstagramFilled,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import React, { ReactNode } from "react";
+import type React from "react";
+import type { ReactNode } from "react";
 import { SiteLogo } from "@/components";
+import type { URLKeys } from "@/lib/types";
 
 interface AuthFormWrapperProps {
   title: string;

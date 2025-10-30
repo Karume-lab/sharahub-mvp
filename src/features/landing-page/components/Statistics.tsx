@@ -1,8 +1,8 @@
 "use client";
 
-import SectionTitle from "@/features/landing-page/components/SectionTitle";
 import { Box, Card, SimpleGrid, Text, Title } from "@mantine/core";
 import CountUp from "react-countup";
+import SectionTitle from "@/features/landing-page/components/SectionTitle";
 
 const statistics = [
   { name: "ACTIVE AFFILIATES", value: 1200 },

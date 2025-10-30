@@ -1,22 +1,22 @@
 .border {
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
 }
 
 .responsiveTitle {
-    font-size: 28px;
-    line-height: 1.2;
+  font-size: 28px;
+  line-height: 1.2;
 }
 
 @media (min-width: 640px) {
-    .responsiveTitle {
-        font-size: 32px;
-    }
+  .responsiveTitle {
+    font-size: 32px;
+  }
 }
 
 @media (min-width: 768px) {
-    .responsiveTitle {
-        font-size: 44px;
-    }
+  .responsiveTitle {
+    font-size: 44px;
+  }
 }

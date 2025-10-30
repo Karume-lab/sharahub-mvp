@@ -1,7 +1,5 @@
 "use client";
 
-import GetInTouchWithUsIllustration from "~/public/landing-page/get-in-touch-with-us.svg";
-import { getPrimaryColorHexCode } from "@/lib/utils";
 import {
   Anchor,
   Box,
@@ -19,10 +17,12 @@ import {
   IconMailFilled,
   IconMapPinFilled,
   IconPhoneFilled,
-  TablerIcon,
+  type TablerIcon,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import SectionTitle from "@/features/landing-page/components/SectionTitle";
+import { getPrimaryColorHexCode } from "@/lib/utils";
+import GetInTouchWithUsIllustration from "~/public/landing-page/get-in-touch-with-us.svg";
 
 const contacts: { Icon: TablerIcon; label: string; href: string }[] = [
   {

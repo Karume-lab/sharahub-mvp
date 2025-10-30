@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { authClient } from "@/features/auth/utils/auth-client";
-import {
-  resetPasswordSchema,
-  type ResetPasswordSchema,
-} from "@/features/auth/validations";
-import { Button, Stack, TextInput, Transition, Box } from "@mantine/core";
+import { Box, Button, Stack, TextInput, Transition } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconMailFilled } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
+import { useState } from "react";
 import ResetPasswordLinkSentAlert from "@/features/auth/components/ResetPasswordLinkSentAlert";
+import { authClient } from "@/features/auth/utils/auth-client";
+import {
+  type ResetPasswordSchema,
+  resetPasswordSchema,
+} from "@/features/auth/validations";
 
 const ResetPasswordForm = () => {
   const [emailSent, setEmailSent] = useState(false);
@@ -38,7 +38,7 @@ const ResetPasswordForm = () => {
               email: ctx.error.message || "Failed to send reset link.",
             });
           },
-        }
+        },
       );
     },
   });

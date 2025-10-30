@@ -1,8 +1,5 @@
 "use client";
 
-import { Link } from "@/components";
-import { authClient } from "@/features/auth/utils/auth-client";
-import { SignUpSchema, signUpSchema } from "@/features/auth/validations";
 import {
   Anchor,
   Box,
@@ -25,6 +22,9 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { zod4Resolver } from "mantine-form-zod-resolver";
 import { useRouter } from "next/navigation";
+import { Link } from "@/components";
+import { authClient } from "@/features/auth/utils/auth-client";
+import { type SignUpSchema, signUpSchema } from "@/features/auth/validations";
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -62,10 +62,10 @@ export default function SignUpForm() {
       });
       router.push("/dashboard");
     },
-    onError: (err: any) => {
+    onError: (error) => {
       notifications.show({
         title: "Sign-up failed",
-        message: err?.message ?? "Something went wrong",
+        message: error?.message ?? "Something went wrong",
         color: "red",
       });
     },

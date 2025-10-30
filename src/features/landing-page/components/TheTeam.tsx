@@ -1,4 +1,3 @@
-import SectionTitle from "@/features/landing-page/components/SectionTitle";
 import {
   Anchor,
   Avatar,
@@ -15,8 +14,9 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconWorld,
-  TablerIcon,
+  type TablerIcon,
 } from "@tabler/icons-react";
+import SectionTitle from "@/features/landing-page/components/SectionTitle";
 
 const members: {
   avatarSrc: string;

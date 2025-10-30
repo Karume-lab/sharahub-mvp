@@ -1,5 +1,5 @@
 import { Card, ScrollArea } from "@mantine/core";
-import React from "react";
+import type React from "react";
 
 interface AuthLayoutProps extends Readonly<{ children: React.ReactNode }> {}
 

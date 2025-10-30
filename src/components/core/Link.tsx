@@ -1,14 +1,16 @@
 "use client";
 
-import { URLKeys } from "@/lib/types";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import React from "react";
+import NextLink, { type LinkProps as NextLinkProps } from "next/link";
+import type React from "react";
+import type { URLKeys } from "@/lib/types";
+
+type QueryObject = Record<string, string | number | boolean | undefined>;
 
 type CustomHref =
   | URLKeys
   | {
       pathname: URLKeys;
-      query?: Record<string, any>;
+      query?: QueryObject;
     };
 
 interface LinkProps extends Omit<NextLinkProps, "href"> {

@@ -1,8 +1,8 @@
-import type { router } from "@/lib/server/orpc/routers";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
-import { RouterClient } from "@orpc/server";
+import type { RouterClient } from "@orpc/server";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
+import type { router } from "@/lib/server/orpc/routers";
 
 const link = new RPCLink({
   url: `${

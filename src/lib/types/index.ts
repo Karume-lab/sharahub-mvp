@@ -1,5 +1,5 @@
-import { ProfileTypes as P } from "@/lib/constants";
-import { FRONTEND_URLS } from "@/lib/urls/frontend-urls";
+import type { ProfileTypes as P } from "@/lib/constants";
+import type { FRONTEND_URLS } from "@/lib/urls/frontend-urls";
 
 export type ProfileTypes = keyof typeof P;
 
