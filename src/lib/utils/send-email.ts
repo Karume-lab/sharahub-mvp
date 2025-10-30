@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { env } from "@/lib/types";
 
 export const sendEmail = async ({
   to,
@@ -16,13 +17,13 @@ export const sendEmail = async ({
   try {
     const info = await nodemailer
       .createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
+        host: env.SMTP_HOST,
+        port: Number(env.SMTP_PORT),
         secure: false,
-        auth: process.env.SMTP_USER
+        auth: env.SMTP_USER
           ? {
-              user: process.env.SMTP_USER,
-              pass: process.env.SMTP_PASS,
+              user: env.SMTP_USER,
+              pass: env.SMTP_PASS,
             }
           : undefined,
       })
@@ -34,7 +35,7 @@ export const sendEmail = async ({
       });
 
     console.log(`✅ Email sent to ${to}: ${info.messageId}`);
-    if (process.env.NODE_ENV === "development") {
+    if (env.NODE_ENV === "development") {
       console.log(`📬 Preview: ${nodemailer.getTestMessageUrl(info)}`);
     }
   } catch (error) {

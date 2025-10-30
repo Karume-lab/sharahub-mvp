@@ -1,13 +1,14 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { seed } from "drizzle-seed";
 import { pool } from "@/lib/db";
+import { env } from "@/lib/types";
 
 const db = drizzle(pool);
 
 export const main = async () => {
   console.log("🌱 Seeding local Postgres DB...");
 
-  if (process.env.NODE_ENV === "production") {
+  if (env.NODE_ENV === "production") {
     console.log("⚠️ Skipping seed in production");
     return;
   }

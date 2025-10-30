@@ -1,5 +1,6 @@
 import type { ProfileTypes as P } from "@/lib/constants";
 import type { FRONTEND_URLS } from "@/lib/urls/frontend-urls";
+import { env } from "./env";
 
 export type ProfileTypes = keyof typeof P;
 
@@ -15,3 +16,5 @@ export type SignInResponse =
       success: false;
       error: string;
     };
+
+export { env };
