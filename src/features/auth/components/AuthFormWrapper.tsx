@@ -21,17 +21,17 @@ import {
   IconBrandGoogleFilled,
   IconBrandInstagramFilled,
 } from "@tabler/icons-react";
+import type { Route } from "next";
 import Link from "next/link";
 import type React from "react";
 import type { ReactNode } from "react";
 import { SiteLogo } from "@/components";
-import type { URLKeys } from "@/lib/types";
 
 interface AuthFormWrapperProps {
   title: string;
   otherPage: {
     title: string;
-    href: URLKeys;
+    href: Extract<Route, "/sign-in" | "/sign-up"> | URL;
     actionTitle: string;
   };
   footerActionTitle: string;
