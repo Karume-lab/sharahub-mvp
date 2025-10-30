@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Group,
   PasswordInput,
   Select,
   SimpleGrid,
@@ -25,6 +26,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/features/auth/utils/auth-client";
 import { type SignUpSchema, signUpSchema } from "@/features/auth/validations";
+import type { ComboboxItemWithDescription } from "@/lib/types";
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -132,15 +134,42 @@ export default function SignUpForm() {
 
       <Stack>
         <Select
-          c="white"
+          label="Select profile type"
           placeholder="Select the type of profile you want"
           withAsterisk
-          disabled={mutation.isPending}
-          label="Select profile type"
-          data={[
-            { label: "Individual", value: "individual" },
-            { label: "Business", value: "business" },
-          ]}
+          disabled={mutation?.isPending}
+          c="white"
+          data={
+            [
+              {
+                label: "Individual",
+                value: "individual",
+                description:
+                  "Join as an affiliate to find and promote business offers. Ideal for creators, influencers, and freelancers.",
+              },
+              {
+                label: "Business",
+                value: "business",
+                description:
+                  "Create campaigns and recruit affiliates to promote your products or services. Ideal for brands and companies.",
+              },
+            ] as ComboboxItemWithDescription[]
+          }
+          renderOption={({ option }) => {
+            const customOption = option as ComboboxItemWithDescription;
+            return (
+              <Group gap="xs" align="flex-start">
+                <div>
+                  <Text size="sm" fw={500}>
+                    {customOption.label}
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    {customOption.description}
+                  </Text>
+                </div>
+              </Group>
+            );
+          }}
           {...form.getInputProps("profileType")}
         />
 
