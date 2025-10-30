@@ -1,0 +1,5 @@
+pre-commit:
+  commands:
+    biome:
+      run: pnpm run clean
+      stage_fixed: true

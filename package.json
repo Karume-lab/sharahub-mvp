@@ -7,6 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
+    "clean": "biome check --write",
     "format": "biome format --write",
     "db:generate": "drizzle-kit generate",
     "db:generate-auth": "pnpm dlx @better-auth/cli@latest generate --output ./src/features/auth/db/auth.ts --config ./src/features/auth/utils/auth.ts --yes",
@@ -15,7 +16,9 @@
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx src/scripts/seed.ts",
     "db:reset": "drizzle-kit drop && pnpm run db:push",
-    "db:reset:seed": "drizzle-kit drop && pnpm run db:push && pnpm run db:seed"
+    "db:reset:seed": "drizzle-kit drop && pnpm run db:push && pnpm run db:seed",
+    "lefthook": "lefthook",
+    "postinstall": "lefthook install"
   },
   "dependencies": {
     "@gfazioli/mantine-marquee": "^2.6.2",
@@ -60,6 +63,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "@types/node": "24.9.1",
+    "lefthook": "^1.12.3",
     "@types/nodemailer": "^7.0.3",
     "@types/pg": "^8.15.5",
     "@types/react": "^19",
