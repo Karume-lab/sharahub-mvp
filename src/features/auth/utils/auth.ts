@@ -4,7 +4,6 @@ import { nextCookies } from "better-auth/next-js";
 import { emailOTP } from "better-auth/plugins";
 import { account, session, user, verification } from "@/features/auth/db/auth";
 import { db } from "@/lib/db";
-import { env } from "@/lib/types";
 import { sendEmail } from "@/lib/utils";
 
 export const auth = betterAuth({
@@ -37,7 +36,7 @@ export const auth = betterAuth({
           <p>You requested a password reset.</p>
           <p>Click below to reset your password:</p>
           <a 
-            href="${env.NEXT_PUBLIC_APP_URL}/reset-password/${token}" 
+            href="${process.env.NEXT_PUBLIC_APP_URL}/reset-password/${token}" 
             style="color: #1a73e8; text-decoration: none; font-weight: bold;"
           >
             Reset Password

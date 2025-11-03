@@ -1,8 +1,8 @@
 import { os } from "@orpc/server";
-import { sendEmailRouter } from "@/lib/server/orpc/routers/send-email-router";
+import { sendEmailProcedure } from "../procedures/send-email-procedure";
 
 export const router = os.router({
-  sendEmail: sendEmailRouter,
+  sendEmail: sendEmailProcedure,
 });
 
 export type Router = typeof router;
