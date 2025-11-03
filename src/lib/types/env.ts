@@ -9,7 +9,9 @@ const envSchema = z.object({
   SMTP_PORT: z.string().transform((val) => Number(val)),
   SMTP_USER: z.string().min(1, "SMTP_USER is required"),
   SMTP_PASS: z.string().min(1, "SMTP_PASS is required"),
-  NODE_ENV: z.enum(["development", "production", "test"]),
+  NODE_ENV: z
+    .enum(["development", "production", "test"])
+    .default("development"),
 });
 
 let env: z.infer<typeof envSchema>;
