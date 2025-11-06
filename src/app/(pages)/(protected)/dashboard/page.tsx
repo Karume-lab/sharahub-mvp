@@ -1,12 +1,5 @@
-import { SignOutButton } from "@/features/auth";
-
 const DashboardPage = () => {
-  return (
-    <div>
-      DashboardPage
-      <SignOutButton />
-    </div>
-  );
+  return <div>DashboardPage</div>;
 };
 
 export default DashboardPage;
