@@ -11,9 +11,10 @@ const ResetPasswordTokenPage = () => {
       }}
       footerActionTitle="SIGN IN"
       title="Enter new password"
-      Form={NewPasswordForm}
       sideImageSrc={"/auth/reset-password.svg"}
-    />
+    >
+      <NewPasswordForm />
+    </AuthFormWrapper>
   );
 };
 

@@ -10,9 +10,10 @@ const ResetPasswordPage = () => {
       }}
       footerActionTitle="SIGN IN"
       title="Reset password"
-      Form={ResetPasswordForm}
       sideImageSrc={"/auth/reset-password.svg"}
-    />
+    >
+      <ResetPasswordForm />
+    </AuthFormWrapper>
   );
 };
 

@@ -10,9 +10,10 @@ const SignInPage = () => {
       }}
       footerActionTitle="SIGN IN"
       title="Sign in to your account"
-      Form={SignInForm}
       sideImageSrc={"/auth/sign-in.svg"}
-    />
+    >
+      <SignInForm />
+    </AuthFormWrapper>
   );
 };
 

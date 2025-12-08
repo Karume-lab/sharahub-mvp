@@ -1,5 +1,8 @@
 /** biome-ignore-all lint/correctness/noUnusedImports: Yet to implement social auth */
 /** biome-ignore-all lint/correctness/noUnusedFunctionParameters: Yet to implement social auth */
+
+"use client";
+
 import {
   Anchor,
   BackgroundImage,
@@ -16,18 +19,18 @@ import {
   Title,
 } from "@mantine/core";
 import {
-  IconArrowNarrowLeft,
   IconBrandFacebookFilled,
   IconBrandGoogleFilled,
   IconBrandInstagramFilled,
+  IconChevronLeft,
 } from "@tabler/icons-react";
 import type { Route } from "next";
 import Link from "next/link";
 import type React from "react";
 import type { ReactNode } from "react";
-import { SiteLogo } from "@/components";
+import SiteLogo from "@/components/core/SiteLogo";
 
-interface AuthFormWrapperProps {
+interface AuthFormWrapperProps extends Readonly<{ children: React.ReactNode }> {
   title: string;
   otherPage: {
     title: string;
@@ -35,15 +38,15 @@ interface AuthFormWrapperProps {
     actionTitle: string;
   };
   footerActionTitle: string;
-  Form: () => Readonly<ReactNode>;
+
   sideImageSrc: string;
 }
 
 const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
   title,
   otherPage,
-  Form,
   sideImageSrc,
+  children,
   footerActionTitle,
 }) => {
   return (
@@ -51,7 +54,6 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
       <Card
         p={{ base: "lg", md: 50 }}
         ta={"center"}
-        bg="primary.3"
         radius="sm"
         withBorder
         w={{
@@ -61,7 +63,7 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
       >
         <Stack>
           <CardSection>
-            <Title c="white" className="responsiveTitle">
+            <Title c={"primary"} className="responsiveTitle">
               {title}
             </Title>
           </CardSection>
@@ -83,20 +85,20 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
           <Divider
             label={<Text c="white">OR {footerActionTitle} WITH EMAIL</Text>}
           /> */}
-          <Box mah={{ lg: "60vh" }} mih={{ lg: 300 }}>
-            <Form />
+          <Box
+            mah={{ lg: "60vh" }}
+            mih={{ lg: 300 }}
+            px={{ lg: 32, xl: 64 }}
+            ta={"left"}
+          >
+            {children}
           </Box>
         </Stack>
 
         <CardSection>
-          <Text c="white" mt="sm">
+          <Text mt="sm">
             {otherPage.title}{" "}
-            <Anchor
-              component={Link}
-              href={otherPage.href}
-              c="white"
-              underline="always"
-            >
+            <Anchor component={Link} href={otherPage.href} underline="always">
               {otherPage.actionTitle}
             </Anchor>
           </Text>
@@ -115,7 +117,7 @@ const AuthFormWrapper: React.FC<AuthFormWrapperProps> = ({
       >
         <Group justify="space-between">
           <Anchor href="/" component={Link}>
-            <Button leftSection={<IconArrowNarrowLeft />} variant="white">
+            <Button leftSection={<IconChevronLeft />} variant="white">
               Back to Website
             </Button>
           </Anchor>
